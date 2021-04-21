@@ -1,0 +1,24 @@
+pipeline {
+    agent  {
+        node{
+            label 'slaveNode'
+            customWorkspace "myWorkspace"
+        }
+
+    }
+
+    stages {
+        stage('git pull source code'){
+            steps {
+                echo 'pull source code'
+            }
+        }
+
+    }
+
+    post {
+        always {
+            echo 'say goodbye'
+        }
+    }
+}
