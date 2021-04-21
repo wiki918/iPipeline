@@ -1,24 +1,21 @@
 pipeline {
-    agent {
-          node{
-              label 'slave2'
-          }
-    }
+    agent any
+
 	stages {
 	    stage('并行执行的 Stage') {
 	        parallel {
 	            stage('Stage2.1') {
-	                agent { label "slave1" }
+	                agent { label "slave2" }
 	                steps {
-	                    echo "在 agent test1 上执行的并行任务 1."
+	                    echo "在 agent slave2 上执行的并行任务 1."
 	                    sh "ifconfig"
 	                    sh "sleep 10"
 	                }
 	            }
 	            stage('Stage2.2') {
-	                agent { label "master" }
+	                agent { label "slave3" }
 	                steps {
-	                    echo "在 agent test2 上执行的并行任务 2."
+	                    echo "在 agent slave3 上执行的并行任务 2."
 	                    sh "pwd"
 	                    sh "sleep 8"
 	                }
