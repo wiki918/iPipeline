@@ -2,7 +2,7 @@ pipeline {
     agent {
           node{
               label 'slave2'
-              customWorkspace "pipelineWorkspace"
+              customWorkspace "workspace/pipelineWorkspace"
           }
 
     }
