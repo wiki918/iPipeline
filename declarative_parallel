@@ -1,5 +1,9 @@
 pipeline {
-    agent none
+    agent {
+          node{
+              label 'slave2'
+          }
+    }
 	stages {
 	    stage('并行执行的 Stage') {
 	        parallel {
